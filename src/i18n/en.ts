@@ -1,8 +1,8 @@
 const en = {
-    'login': 'login',
-    'product': 'product',
-    'flowerbox': 'flowerbox',
-    'lesson': 'lesson',
-    'contact': 'contact',
+    'login': 'Login',
+    'product': 'Product',
+    'flowerbox': 'Flowerbox',
+    'lesson': 'Lesson',
+    'contact': 'Contact',
 };
 export default en;

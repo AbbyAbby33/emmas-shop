@@ -14,8 +14,10 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import ViewInArIcon from '@mui/icons-material/ViewInAr';
+import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
+import DiamondIcon from '@mui/icons-material/Diamond';
+import DryIcon from '@mui/icons-material/Dry';
 import { styled } from '@mui/material/styles';
 // 多國語言
 import { IntlProvider, FormattedMessage } from 'react-intl';
@@ -42,20 +44,26 @@ function App(props: any) {
     zIndex: theme.zIndex.drawer + 1,
     position: 'relative'
   }));
-  
+
+  const menu = [
+    { id: 'product', icon: <ViewInArIcon /> },
+    { id: 'flowerbox', icon: <DiamondIcon /> },
+    { id: 'lesson', icon: <DryIcon /> },
+    { id: 'contact', icon: <LocalPostOfficeIcon /> }
+  ]
+
   /** menu */
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
       <List>
-        {['product', 'flowerbox', 'lesson', 'contact'].map((text, index) => (
-          <ListItem button key={text}>
+        {menu.map(v => (
+          <ListItem button key={v.id}>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              {v.icon}
             </ListItemIcon>
-            {/* <ListItemText primary={text} /> */}
-            <ListItemText primary={handleI18n(text)} />
+            <ListItemText primary={handleI18n(v.id)} />
           </ListItem>
         ))}
       </List>
