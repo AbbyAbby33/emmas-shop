@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 // material元件
 // import AppBar from '@mui/material/AppBar';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
@@ -23,6 +23,14 @@ import { styled } from '@mui/material/styles';
 import { IntlProvider, FormattedMessage } from 'react-intl';
 import en from './i18n/en';
 import zh from './i18n/zh';
+
+// router
+import { Route, NavLink, Routes } from 'react-router-dom';
+const Product = lazy(() => import('./pages/Product'));
+const FlowerBox = lazy(() => import('./pages/FlowerBox'));
+const Lesson = lazy(() => import('./pages/Lesson'));
+const Contact = lazy(() => import('./pages/Contact'));
+const NotMatch = lazy(() => import('./pages/NotMatch'));
 
 /** 菜單寬度 */
 const drawerWidth = 240;
@@ -59,12 +67,14 @@ function App(props: any) {
       <Divider />
       <List>
         {menu.map(v => (
-          <ListItem button key={v.id}>
-            <ListItemIcon>
-              {v.icon}
-            </ListItemIcon>
-            <ListItemText primary={handleI18n(v.id)} />
-          </ListItem>
+          <NavLink to={`/${v.id}`} key={v.id}>
+            <ListItem button>
+              <ListItemIcon>
+                {v.icon}
+              </ListItemIcon>
+              <ListItemText primary={handleI18n(v.id)} />
+            </ListItem>
+          </NavLink>
         ))}
       </List>
       {/* <Divider />
@@ -94,6 +104,7 @@ function App(props: any) {
   return (
     <IntlProvider locale={locale} messages={message}>
       <div className="App">
+        {/* header */}
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
             <Toolbar>
@@ -125,6 +136,7 @@ function App(props: any) {
           </AppBar>
         </Box>
 
+        {/* menu */}
         <Box
           component="nav"
           sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -156,13 +168,56 @@ function App(props: any) {
             {drawer}
           </Drawer>
         </Box>
+        {/* content */}
         <Box
           component="div"
           sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, ml: { sm: `${drawerWidth}px` }, flexShrink: { sm: '100%' } }}
           aria-label="mailbox folders"
         >
-          {/* <Button variant="contained" onClick={() => { setLocale('en'); setMessage(en) }}>English</Button>
-          <Button variant="contained" onClick={() => { setLocale('zh'); setMessage(zh) }}>中文</Button> */}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <React.Suspense fallback={<>...</>}>
+                  <Product />
+                </React.Suspense>
+              } />
+            <Route
+              path="/product"
+              element={
+                <React.Suspense fallback={<>...</>}>
+                  <Product />
+                </React.Suspense>
+              } />
+            <Route
+              path="/flowerbox"
+              element={
+                <React.Suspense fallback={<>...</>}>
+                  <FlowerBox />
+                </React.Suspense>
+              } />
+            <Route
+              path="/lesson"
+              element={
+                <React.Suspense fallback={<>...</>}>
+                  <Lesson />
+                </React.Suspense>
+              } />
+            <Route
+              path="/contact"
+              element={
+                <React.Suspense fallback={<>...</>}>
+                  <Contact />
+                </React.Suspense>
+              } />
+            <Route
+              path="*"
+              element={
+                <React.Suspense fallback={<>...</>}>
+                  <NotMatch />
+                </React.Suspense>
+              } />
+          </Routes>
         </Box>
 
       </div>
