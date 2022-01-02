@@ -108,8 +108,13 @@ function App(props: any) {
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                Emma's Shop
+                <FormattedMessage
+                  id="emmas_shop"
+                  defaultMessage="emmas_shop"
+                />
               </Typography>
+              <Button color="inherit" onClick={() => { setLocale('en'); setMessage(en) }}>English</Button>
+              <Button color="inherit" onClick={() => { setLocale('zh'); setMessage(zh) }}>中文</Button>
               <Button color="inherit">
                 <FormattedMessage
                   id="login"
@@ -156,8 +161,8 @@ function App(props: any) {
           sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, ml: { sm: `${drawerWidth}px` }, flexShrink: { sm: '100%' } }}
           aria-label="mailbox folders"
         >
-          <Button variant="contained" onClick={() => { setLocale('en'); setMessage(en) }}>English</Button>
-          <Button variant="contained" onClick={() => { setLocale('zh'); setMessage(zh) }}>中文</Button>
+          {/* <Button variant="contained" onClick={() => { setLocale('en'); setMessage(en) }}>English</Button>
+          <Button variant="contained" onClick={() => { setLocale('zh'); setMessage(zh) }}>中文</Button> */}
         </Box>
 
       </div>
