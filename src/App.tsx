@@ -18,14 +18,52 @@ import ViewInArIcon from '@mui/icons-material/ViewInAr';
 import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
 import DiamondIcon from '@mui/icons-material/Diamond';
 import DryIcon from '@mui/icons-material/Dry';
-import { styled } from '@mui/material/styles';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 // 多國語言
 import { IntlProvider, FormattedMessage } from 'react-intl';
 import en from './i18n/en';
 import zh from './i18n/zh';
-
 // router
 import { Route, NavLink, Routes } from 'react-router-dom';
+
+const theme = createTheme({
+  palette: {
+    // mode: 'dark',
+    primary: {
+      main: '#16504b',
+    },
+    secondary: {
+      main: '#f50057',
+    },
+    info: {
+      main: '#676F54',
+    },
+    warning: {
+      main: '#FDE74C',
+    },
+    error: {
+      main: '#A93636',
+    },
+    success: {
+      main: '#62dc66',
+    },
+  },
+  // typography: {
+  //   // Tell Material-UI what's the font-size on the html element is.
+  //   htmlFontSize: 20,
+  // },
+  // breakpoints: {
+  //   values: {
+  //     xs: 0,
+  //     sm: 900,
+  //     md: 900,
+  //     lg: 1000,
+  //     xl: 1200,
+  //   },
+  // },
+});
+
+// router
 const Product = lazy(() => import('./pages/Product'));
 const FlowerBox = lazy(() => import('./pages/FlowerBox'));
 const Lesson = lazy(() => import('./pages/Lesson'));
@@ -104,122 +142,123 @@ function App(props: any) {
   return (
     <IntlProvider locale={locale} messages={message}>
       <div className="App">
-        {/* header */}
-        <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static">
-            <Toolbar>
-              <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                sx={{ mr: 2, display: { xs: 'block', sm: 'none' } }}
-                onClick={handleDrawerToggle}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <FormattedMessage
-                  id="emmas_shop"
-                  defaultMessage="emmas_shop"
-                />
-              </Typography>
-              <Button color="inherit" onClick={() => { setLocale('en'); setMessage(en) }}>English</Button>
-              <Button color="inherit" onClick={() => { setLocale('zh'); setMessage(zh) }}>中文</Button>
-              <Button color="inherit">
-                <FormattedMessage
-                  id="login"
-                  defaultMessage="login"
-                />
-              </Button>
-            </Toolbar>
-          </AppBar>
-        </Box>
+        <ThemeProvider theme={theme}>
+          {/* header */}
+          <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+              <Toolbar>
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="menu"
+                  sx={{ mr: 2, display: { xs: 'block', sm: 'none' } }}
+                  onClick={handleDrawerToggle}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                  <FormattedMessage
+                    id="emmas_shop"
+                    defaultMessage="emmas_shop"
+                  />
+                </Typography>
+                <Button color="inherit" onClick={() => { setLocale('en'); setMessage(en) }}>English</Button>
+                <Button color="inherit" onClick={() => { setLocale('zh'); setMessage(zh) }}>中文</Button>
+                <Button color="inherit">
+                  <FormattedMessage
+                    id="login"
+                    defaultMessage="login"
+                  />
+                </Button>
+              </Toolbar>
+            </AppBar>
+          </Box>
 
-        {/* menu */}
-        <Box
-          component="nav"
-          sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-          aria-label="mailbox folders"
-        >
-          <Drawer
-            container={container}
-            variant="temporary"
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-            sx={{
-              display: { xs: 'block', sm: 'none' },
-              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
-            }}
+          {/* menu */}
+          <Box
+            component="nav"
+            sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+            aria-label="mailbox folders"
           >
-            {drawer}
-          </Drawer>
-          <Drawer
-            variant="permanent"
-            sx={{
-              display: { xs: 'none', sm: 'block' },
-              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
-            }}
-            open
+            <Drawer
+              container={container}
+              variant="temporary"
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              ModalProps={{
+                keepMounted: true, // Better open performance on mobile.
+              }}
+              sx={{
+                display: { xs: 'block', sm: 'none' },
+                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
+              }}
+            >
+              {drawer}
+            </Drawer>
+            <Drawer
+              variant="permanent"
+              sx={{
+                display: { xs: 'none', sm: 'block' },
+                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
+              }}
+              open
+            >
+              {drawer}
+            </Drawer>
+          </Box>
+          {/* content */}
+          <Box
+            component="div"
+            sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, ml: { sm: `${drawerWidth}px` }, flexShrink: { sm: '100%' } }}
+            aria-label="mailbox folders"
           >
-            {drawer}
-          </Drawer>
-        </Box>
-        {/* content */}
-        <Box
-          component="div"
-          sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, ml: { sm: `${drawerWidth}px` }, flexShrink: { sm: '100%' } }}
-          aria-label="mailbox folders"
-        >
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <Product />
-                </React.Suspense>
-              } />
-            <Route
-              path="/product"
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <Product />
-                </React.Suspense>
-              } />
-            <Route
-              path="/flowerbox"
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <FlowerBox />
-                </React.Suspense>
-              } />
-            <Route
-              path="/lesson"
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <Lesson />
-                </React.Suspense>
-              } />
-            <Route
-              path="/contact"
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <Contact />
-                </React.Suspense>
-              } />
-            <Route
-              path="*"
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <NotMatch />
-                </React.Suspense>
-              } />
-          </Routes>
-        </Box>
-
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <Product />
+                  </React.Suspense>
+                } />
+              <Route
+                path="/product"
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <Product />
+                  </React.Suspense>
+                } />
+              <Route
+                path="/flowerbox"
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <FlowerBox />
+                  </React.Suspense>
+                } />
+              <Route
+                path="/lesson"
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <Lesson />
+                  </React.Suspense>
+                } />
+              <Route
+                path="/contact"
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <Contact />
+                  </React.Suspense>
+                } />
+              <Route
+                path="*"
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <NotMatch />
+                  </React.Suspense>
+                } />
+            </Routes>
+          </Box>
+        </ThemeProvider>
       </div>
     </IntlProvider>
   );
