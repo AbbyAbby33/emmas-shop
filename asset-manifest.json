@@ -1,15 +1,25 @@
 {
   "files": {
     "main.css": "/emmas-shop/static/css/main.e6c13ad2.css",
-    "main.js": "/emmas-shop/static/js/main.1fa9961a.js",
+    "main.js": "/emmas-shop/static/js/main.ba391ba5.js",
+    "static/js/197.126eb34d.chunk.js": "/emmas-shop/static/js/197.126eb34d.chunk.js",
+    "static/js/636.e0b9113a.chunk.js": "/emmas-shop/static/js/636.e0b9113a.chunk.js",
+    "static/js/284.585b30aa.chunk.js": "/emmas-shop/static/js/284.585b30aa.chunk.js",
+    "static/js/245.79585e84.chunk.js": "/emmas-shop/static/js/245.79585e84.chunk.js",
+    "static/js/336.aa7de861.chunk.js": "/emmas-shop/static/js/336.aa7de861.chunk.js",
     "static/js/787.10f1bd0f.chunk.js": "/emmas-shop/static/js/787.10f1bd0f.chunk.js",
     "index.html": "/emmas-shop/index.html",
     "main.e6c13ad2.css.map": "/emmas-shop/static/css/main.e6c13ad2.css.map",
-    "main.1fa9961a.js.map": "/emmas-shop/static/js/main.1fa9961a.js.map",
+    "main.ba391ba5.js.map": "/emmas-shop/static/js/main.ba391ba5.js.map",
+    "197.126eb34d.chunk.js.map": "/emmas-shop/static/js/197.126eb34d.chunk.js.map",
+    "636.e0b9113a.chunk.js.map": "/emmas-shop/static/js/636.e0b9113a.chunk.js.map",
+    "284.585b30aa.chunk.js.map": "/emmas-shop/static/js/284.585b30aa.chunk.js.map",
+    "245.79585e84.chunk.js.map": "/emmas-shop/static/js/245.79585e84.chunk.js.map",
+    "336.aa7de861.chunk.js.map": "/emmas-shop/static/js/336.aa7de861.chunk.js.map",
     "787.10f1bd0f.chunk.js.map": "/emmas-shop/static/js/787.10f1bd0f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.1fa9961a.js"
+    "static/js/main.ba391ba5.js"
   ]
 }

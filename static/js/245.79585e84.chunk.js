@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkflower_shop=self.webpackChunkflower_shop||[]).push([[245],{1245:function(n,e,r){r.r(e),r.d(e,{default:function(){return u}});r(2791);var t=r(184);function u(){return(0,t.jsx)("div",{children:"Contact"})}}}]);
+//# sourceMappingURL=245.79585e84.chunk.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkflower_shop=self.webpackChunkflower_shop||[]).push([[284],{4284:function(e,n,r){r.r(n),r.d(n,{default:function(){return u}});r(2791);var s=r(184);function u(){return(0,s.jsx)("div",{children:"Lesson"})}}}]);
+//# sourceMappingURL=284.585b30aa.chunk.js.map

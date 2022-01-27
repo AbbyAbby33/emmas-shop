@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkflower_shop=self.webpackChunkflower_shop||[]).push([[636],{6636:function(e,n,r){r.r(n),r.d(n,{default:function(){return o}});r(2791);var u=r(184);function o(){return(0,u.jsx)("div",{children:"FlowerBox"})}}}]);
+//# sourceMappingURL=636.e0b9113a.chunk.js.map
